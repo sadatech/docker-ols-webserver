@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+
+# Move default config
+mv /tmp/lsws/templates/WebServer.conf /usr/local/lsws/conf/templates/WebServer.conf
+mv /tmp/lsws/httpd_config.conf /usr/local/lsws/conf/httpd_config.conf
+
+# Configure vhost
+mkdir -p /home/vhosts/Default/public_html
+mkdir -p /home/vhosts/Default/logs
+mkdir -p /home/vhosts/Default/certs
+mkdir -p /home/vhosts/Default/conf
+chown 1000:1000 /home/vhosts/Default/ -R
+chown 999:999 /usr/local/lsws/conf -R
+cp -RP /usr/local/lsws/conf/ /usr/local/lsws/.conf/
+cp -RP /usr/local/lsws/admin/conf /usr/local/lsws/admin/.conf/

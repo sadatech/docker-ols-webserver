@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+# Installer
+apt install -y supervisor
+
+# Enable
+systemctl enable supervisor
+
+#

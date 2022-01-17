@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+
+# Init OLS
+wget -O /usr/local/lsws/admin/misc/lsup.sh https://raw.githubusercontent.com/litespeedtech/openlitespeed/master/dist/admin/misc/lsup.sh
+chmod +x /usr/local/lsws/admin/misc/lsup.sh
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x wp-cli.phar && mv wp-cli.phar /usr/bin/wp
+wget -O -  https://get.acme.sh | sh
+ln -sf /root/.acme.sh/acme.sh /usr/local/bin/acme.sh
+mv /tmp/lsws/admin_config.conf /usr/local/lsws/admin/conf/admin_config.conf
+mv /tmp/lsws/php.ini /usr/local/lsws/php.ini
+rm /usr/local/lsws/lsphp72/etc/php/7.2/litespeed/php.ini
+rm /usr/local/lsws/lsphp73/etc/php/7.3/litespeed/php.ini
+rm /usr/local/lsws/lsphp74/etc/php/7.4/litespeed/php.ini
+ln -sf /usr/local/lsws/php.ini /usr/local/lsws/lsphp72/etc/php/7.2/litespeed/php.ini
+ln -sf /usr/local/lsws/php.ini /usr/local/lsws/lsphp73/etc/php/7.3/litespeed/php.ini
+ln -sf /usr/local/lsws/php.ini /usr/local/lsws/lsphp74/etc/php/7.4/litespeed/php.ini
+ln -sf /usr/local/lsws/lsphp74/bin/php /usr/bin/php
