@@ -1,4 +1,4 @@
-FROM sadaindonesia/ubuntu-baseline:focal
+FROM sadaindonesia/ubuntu-baseline:bionic
 
 # Update package list
 RUN apt -y update && \
