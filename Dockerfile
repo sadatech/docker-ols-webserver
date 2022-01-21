@@ -2,7 +2,6 @@ FROM sadaindonesia/ubuntu-baseline:focal
 
 # Update package list
 RUN apt -y update && \
-    apt -y install wget curl cron tzdata screen && \
     apt -y upgrade
 
 # Configure Command
