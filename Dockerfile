@@ -14,13 +14,8 @@ RUN dos2unix /tmp/configure-* && \
     sh -c /tmp/configure-vhost-openlitespeed && \
     sh -c /tmp/configure-composer && \
     sh -c /tmp/configure-supervisor && \
-    sh -c /tmp/configure-nodejs && \
     sh -c /tmp/configure-openssh && \
-    sh -c /tmp/configure-vsftpd && \
-    sh -c /tmp/configure-vnstat && \
-    sh -c /tmp/configure-healthcheck && \
-    sh -c /tmp/configure-container 
-ADD /sources/healthcheck /opt/healthcheck
+    sh -c /tmp/configure-vsftpd
 
 # Clear Temp
 RUN rm /etc/timezone && \
@@ -35,6 +30,5 @@ RUN rm /etc/timezone && \
 # Container Environment
 EXPOSE 20 21 22 80 443 7080
 WORKDIR /home/vhosts
-HEALTHCHECK CMD node /opt/healthcheck/monitor.js
 LABEL maintainer="Andika Muhammad Cahya <andkmc99@gmail.com>"
 LABEL container="Web Server Application (OLS)"
