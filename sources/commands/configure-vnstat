@@ -1,8 +1,0 @@
-#!/bin/sh
-set -e
-
-# installer
-apt -y install vnstat
-
-# enable
-systemctl enable vnstat
